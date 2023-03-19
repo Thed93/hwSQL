@@ -1,47 +1,3 @@
--- Создайте базу данных “skypro”.
-CREATE DATABASE skypro;
--- Переключитесь сразу на созданную базу данных (\c skypro).
-\c skypro;
-
--- Создайте таблицу employee с столбцами:
---
--- - id(BIGSERIAL, NOT NULL, PRIMARY KEY)
--- - first_name(VARCHAR(50), NOT NULL)
--- - last_name(VARCHAR(50), NOT NULL)
--- - gender(VARCHAR(6), NOT NULL)
--- - age (INT, NOT NULL)
-CREATE TABLE employee (
-id BIGSERIAL NOT NULL PRIMARY KEY,
-first_name VARCHAR(50) NOT NULL,
-last_name VARCHAR(50) NOT NULL,
-gender VARCHAR(6) NOT NULL,
-age INT NOT NULL
-);
-
--- Добавьте в таблицу 3 записи.
-INSERT INTO employee (
-first_name, last_name, gender, age)
-VALUES ('Ivan', 'Ivanov', 'male', 23);
-
-INSERT INTO employee (
-first_name, last_name, gender, age)
-VALUES ('Petr', 'Petrov', 'male', 45);
-
-INSERT INTO employee (
-first_name, last_name, gender, age)
-VALUES ('Olga', 'Vanina', 'female', 29);
-
--- Получите все записи из базы.
-SELECT * FROM employee;
-
-UPDATE employee SET first_name = 'Andrey', last_name = 'Andreev', gender = 'female', age = 25 WHERE id = 2;
-SELECT * FROM employee;
-
-DELETE FROM employee WHERE id = 1;
-SELECT * FROM employee;
-
--- hw 1.2
-
 -- Доведите количество записей в таблице до 5.
 INSERT INTO employee (
 first_name, last_name, gender, age)
@@ -104,6 +60,3 @@ FROM employee
 SELECT first_name, MAX(age) FROM employee
 GROUP BY first_name
 HAVING COUNT(first_name) > 1;
-
-
-
